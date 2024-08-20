@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List Check Off</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .list {
+            width: 45%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .list h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .item button {
+            padding: 2px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- To Buy List -->
+        <div class="list" ng-controller="ToBuyController as toBuyCtrl">
+            <h2>To Buy</h2>
+            <p ng-if="toBuyCtrl.toBuyItems.length === 0">Everything is bought!</p>
+            <div class="item" ng-repeat="item in toBuyCtrl.toBuyItems">
+                <span>{{ item.name }} (Quantity: {{ item.quantity }})</span>
+                <button ng-click="toBuyCtrl.buyItem($index)">Bought</button>
+            </div>
+        </div>
+
+        <!-- Already Bought List -->
+        <div class="list" ng-controller="AlreadyBoughtController as boughtCtrl">
+            <h2>Already Bought</h2>
+            <p ng-if="boughtCtrl.boughtItems.length === 0">Nothing bought yet.</p>
+            <div class="item" ng-repeat="item in boughtCtrl.boughtItems">
+                <span>{{ item.name }} (Quantity: {{ item.quantity }})</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
