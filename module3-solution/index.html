@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="NarrowItDownApp">
+<head>
+  <title>Narrow It Down</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div ng-controller="NarrowItDownController as narrowCtrl">
+    <h1>Narrow Down Your Menu Choices</h1>
+    
+    <input type="text" ng-model="narrowCtrl.searchTerm" placeholder="Search term">
+    <button ng-click="narrowCtrl.getMatchedItems()">Narrow It Down For Me!</button>
+    
+    <found-items items="narrowCtrl.found" on-remove="narrowCtrl.removeItem(index)"></found-items>
+  </div>
+</body>
+</html>
