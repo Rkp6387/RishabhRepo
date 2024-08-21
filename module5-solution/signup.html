@@ -1,0 +1,50 @@
+<div>
+    <h2>Sign Up for our Newsletter</h2>
+    <form name="signupForm" ng-submit="submitForm(signupForm)" novalidate>
+      <div>
+        <label>First Name:</label>
+        <input type="text" name="firstName" ng-model="user.firstName" required />
+        <div ng-show="signupForm.firstName.$touched && signupForm.firstName.$invalid">
+          <span class="error">First Name is required.</span>
+        </div>
+      </div>
+  
+      <div>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" ng-model="user.lastName" required />
+        <div ng-show="signupForm.lastName.$touched && signupForm.lastName.$invalid">
+          <span class="error">Last Name is required.</span>
+        </div>
+      </div>
+  
+      <div>
+        <label>Email Address:</label>
+        <input type="email" name="email" ng-model="user.email" required />
+        <div ng-show="signupForm.email.$touched && signupForm.email.$invalid">
+          <span class="error">A valid email is required.</span>
+        </div>
+      </div>
+  
+      <div>
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" ng-model="user.phone" required ng-pattern="/^\d{10}$/" />
+        <div ng-show="signupForm.phone.$touched && signupForm.phone.$invalid">
+          <span class="error">A valid 10-digit phone number is required.</span>
+        </div>
+      </div>
+  
+      <div>
+        <label>Favorite Menu Item (Menu Number):</label>
+        <input type="text" name="menuNumber" ng-model="user.menuNumber" required />
+        <div ng-show="menuError">
+          <span class="error">No such menu number exists.</span>
+        </div>
+      </div>
+  
+      <button type="submit">Submit</button>
+      <div ng-show="infoSaved">
+        <p>Your information has been saved.</p>
+      </div>
+    </form>
+  </div>
+  
